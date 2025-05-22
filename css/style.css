@@ -1,0 +1,343 @@
+/** 
+   Copyright 2025 João Paulo Santos Souza
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License. 
+*/
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fdfaf6;
+  color: #402e1e;
+  
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1; /* ocupa o espaço restante */
+}
+.codigo-exclusao {
+  margin-top: 20px;
+  text-align: center;
+  background: #f5efe5;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 300px;
+  max-height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.hero .codigo-exclusao h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: #333;
+  margin-top: 2px;
+}
+
+.hero .codigo-exclusao p {
+  font-size: 0.95em;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.hero .codigo-exclusao input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+.hero-buttons .btn-red,
+.codigo-exclusao  .btn-red {
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.hero-buttons .btn-red,
+.codigo-exclusao .btn-red:hover {
+  background-color: #c9302c;
+}
+.hero-buttons .btn-red:hover {
+  background-color: #f1251e /* Fundo semi-transparente ao passar o mouse */
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5e3b1e;
+  color: #fff;
+  padding: 15px 30px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);  
+  position: relative;
+
+}
+
+.logo {
+  font-size: 1.5em;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 10px; /* Adicionando um espaço ao redor do texto */
+  transition: background-color 0.3s ease; /* Suavizando a transição */
+  border-radius: 5px;
+}
+.nav-links a:hover {
+  background-color: rgb(94, 46, 23) /* Fundo semi-transparente ao passar o mouse */
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background-color: #fff7e8;
+}
+
+.hero h1 {
+  font-size: 72px;
+  margin-bottom: 0px;
+  color: #5a2d16;
+}
+
+.hero p {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-orange {
+  background-color: #e67c00;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Suavizando a transição */
+}
+.btn-orange:hover {
+  background-color: #ff9924 /* Fundo semi-transparente ao passar o mouse */
+}
+
+.btn-green {
+  background-color: #4a8936;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Suavizando a transição */
+}
+.btn-green:hover {
+  background-color: #38a318 /* Fundo semi-transparente ao passar o mouse */
+}
+
+
+/* FORMULÁRIO COM TRANSIÇÃO SUAVE */
+.formulario {
+
+  margin-top: 20px;
+  background: #f5efe5;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: all 0,5s ease;
+}
+
+.formulario.show {
+  border: 2px dashed #ccc;
+  max-height: 1000px;
+  margin-top: 20px;
+  padding: 20px;
+  opacity: 1;
+}
+.formulario.hidden  {
+  border: 0 #ffffff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form input,
+form select,
+form button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+}
+
+form button {
+  background-color: #e67c00;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+textarea.form-control {
+  width: 95%;
+  padding: 10px;
+  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.listagem {
+  padding: 40px 20px;
+  padding-top: 5px;
+}
+.listagem h2{
+  font-size: 32px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.filtros {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Filtro bairro */
+#filtro-bairro, #filtro-tipo{
+ border-top-left-radius:5px;
+ border-top-right-radius:5px;
+ border-bottom-left-radius:5px;
+ border-bottom-right-radius:5px;
+ height:22px;
+ box-shadow:none;
+ border-style:none;
+ background-repeat:repeat;
+ box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);  
+  
+}
+
+.card-lista {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 0 10px #ccc;
+  text-align: center;
+}
+.card p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.card .descricao{
+  justify-content: left;
+  font-size: 12px;
+  max-height: 5.5em; /* Limita a cerca de 3 linhas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card p {
+  margin: 5px;
+}
+
+.card h3 {
+  margin: 5px;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.paginacao {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.paginacao button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.paginacao button.active {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+.paginacao button:hover {
+  background-color: #ddd;
+}
+
+.footer {
+  text-align: center;
+  padding: 4px;
+  background-color: #5e3b1e;
+  color: white;
+  font-size: 0.9em;
+}
+
+.footer a {
+  color: #fff7c0;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
