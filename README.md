@@ -88,10 +88,10 @@ This project is licensed under the terms of the [LICENSE](./LICENSE) file.
 
 ## 📸 Demo
 
-
+https://github.com/user-attachments/assets/6f5c7984-7be1-46d7-babc-dc3f8f83a816
 
 <img src="https://i.ibb.co/nMkrK4cf/Captura-de-tela-2025-05-24-013800.png" width="45%" />
-<br>
+
 <img src="https://i.ibb.co/XxN7f0yS/Screenshot-20250524-013928-Edge.jpg" width="45%" />
 
 ---
