@@ -62,10 +62,12 @@ function toggleForm(acao) {
 function filtrar() {
   const tipo = document.getElementById('filtro-tipo').value.toLowerCase();
   const bairro = document.getElementById('filtro-bairro').value.toLowerCase();
+  const status = document.getElementById('filtro-status').value.toLowerCase();
   document.querySelectorAll('.card').forEach(card => {
     const tipoCard = card.getAttribute('data-tipo').toLowerCase();
     const bairroCard = card.getAttribute('data-bairro').toLowerCase();
-    card.style.display = (!tipo || tipoCard === tipo) && (!bairro || bairroCard === bairro) ? 'block' : 'none';
+    const statusCard = card.getAttribute('data-status').toLowerCase();
+    card.style.display = (!tipo || tipoCard === tipo) && (!bairro || bairroCard === bairro) && (!status || statusCard === status) ? 'block' : 'none';
   });
 }
 

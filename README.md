@@ -1,72 +1,117 @@
 
 # 🐾 PetLocaliza
 
-**PetLocaliza** is a simple and intuitive web application designed to help people find their lost pets or report animals they have found on the streets. The goal is to facilitate reunions between pets and their owners, promoting community support and quick communication.
+PetLocaliza is a web application that facilitates the dissemination of lost or found animals. With a simple and objective interface, it allows users to register information, consult by location, and maintain a flexible database that can be adapted for various solutions.
 
-## 🚀 Features
+![PetLocaliza](./img/icons/icon-192.png)
 
-- 📌 Register reports of lost or found animals.
-- 📍 Display reports in cards with relevant information (name, location, contact, etc).
-- 🔍 Allow users to browse and filter posts.
-- 📱 Responsive design with mobile support (PWA).
-- 🔗 Integration with WhatsApp to facilitate contact between users.
+---
 
-## 🧰 Technologies Used
+## 🚀 Technologies Used
 
-- **HTML5, CSS3, and JavaScript** – structure, style, and interactivity.
-- **PHP** – backend logic and data integration.
-- **JSON** (`data/datas.json`) – simulates a local database of animal reports.
-- **MySQL (optional)** – the system is flexible and can be adapted to use a real database instead of JSON.
-- **PWA (Progressive Web App)** – allows the site to be installed as a mobile app.
+- **HTML5**
+- **CSS3**
+- **JavaScript (ES6)**
+- **PHP**
+- **JSON** → Local database (`datas.json`), which can be easily migrated to NoSQL databases like **Firebase** or **MongoDB**.
 
-## 🗂 Project Structure
+---
 
-```
-PetLocaliza/
-├── index.php                # Main page
-├── css/
-│   └── style.css            # Custom styles
-├── js/
-│   └── script.js            # Interaction scripts
-├── data/
-│   └── datas.json           # Simulated report data
-├── img/
-│   └── icons/               # Icons and images
-├── manifest.json           # PWA configuration
-└── ...
-```
+## 🛠️ Features
 
-## ⚙️ How to Use
+- ✅ Register lost or found animals.
+- ✅ Search and auto-fill address via ZIP code.
+- ✅ Delete records.
+- ✅ Ready-to-use **Progressive Web App (PWA)** structure.
+- ✅ Responsive interface.
+
+---
+
+## 🔗 APIs and Services
+
+- **ViaCEP API** → Address lookup by ZIP code: [https://viacep.com.br](https://viacep.com.br)
+
+---
+
+## 🗂️ Data Structure
+
+The data is currently stored in `data/datas.json`, but the project can be easily adapted to use **NoSQL** databases such as:
+
+- **Firebase Firestore**
+- **MongoDB**
+- **CouchDB**
+
+---
+
+## 📦 How to Use
+
+### ✔️ Prerequisites:
+
+- Server with **PHP** support (Apache, Nginx, etc.).
+- Modern web browser (for PWA compatibility).
+
+### ✔️ Steps:
 
 1. **Clone the repository:**
+```bash
+git clone https://github.com/yourusername/PetLocaliza.git
+```
 
-   ```bash
-   git clone https://github.com/joaopssouza/PetLocaliza.git
-   cd petlocaliza
-   ```
+2. **Set up the local server:**
+- Place the folder in a PHP environment (e.g., `htdocs` for XAMPP or `www` for WAMP).
 
-2. **Run on a local server** (PHP recommended):
+3. **Access via browser:**
+```
+http://localhost/PetLocaliza/
+```
 
-   You can use XAMPP, WampServer, or PHP's built-in server:
+4. **Use the application:**
+- Register new cases.
+- View registered animals.
+- Edit or delete as needed.
 
-   ```bash
-   php -S localhost:8000
-   ```
+---
 
-   Then open in your browser: [http://localhost:8000](http://localhost:8000)
+## 💡 Customization
 
-3. **(Optional) Configure with MySQL:**
+- The default storage (`data/datas.json`) can be replaced by a NoSQL database as needed.
+- The `manifest.json` is already configured for PWA and can be adjusted with your specific app name and icons.
+- Styles can be customized in `css/style.css`.
 
-   - Create a database and the appropriate table.
-   - Replace the logic that reads from `datas.json` with real database access using `mysqli` or `PDO`.
-   - Add your credentials to `index.php` or a separate config file.
+---
 
-## 💡 Notes
+## 📄 License
 
-- The project uses fictional data from the `datas.json` file for simulation. You can edit this file or implement a real database connection.
-- The design and colors were chosen to reflect nature and care for animals, using tones like green and brown.
+This project is licensed under the terms of the [LICENSE](./LICENSE) file.
+
+---
 
 ## 📸 Demo
 
-*(You can include screenshots or a link to a live version of the project here)*
-"# PetLocaliza" 
+
+
+<img src="https://i.ibb.co/nMkrK4cf/Captura-de-tela-2025-05-24-013800.png" width="45%" />
+<br>
+<img src="https://i.ibb.co/XxN7f0yS/Screenshot-20250524-013928-Edge.jpg" width="45%" />
+
+---
+
+
+## 🤝 Contributions
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+---
+
+## 📧 Contact
+
+For questions or suggestions, please contact:
+
+- **João Paulo**
+- **[LinkedIn](https://www.linkedin.com/in/ap-joao-paulo/)**
+
+---
+
+🐾 **PetLocaliza — Because every animal deserves to find their way home.**
+
+

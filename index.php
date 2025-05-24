@@ -15,12 +15,16 @@
 -->
 
 <?php
+date_default_timezone_set("America/Sao_Paulo");
 require_once 'utils/functions.php';
 
 $dados = carregarDados('data/datas.json');
+
 $tipos = listarUnicos($dados, 'tipo');
 $bairros = listarUnicos($dados, 'bairro');
 $cidades = listarUnicos($dados, 'cidade');
+$statuss = listarUnicos($dados, 'status');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,6 +37,7 @@ $cidades = listarUnicos($dados, 'cidade');
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#4CAF50" />
   <script src="js/script.js"></script>
+  <script src="js/cep.js"></script>
 </head>
 <body>
   <header class="top-header">
@@ -63,28 +68,14 @@ $cidades = listarUnicos($dados, 'cidade');
       <div id="form-section" class="formulario" >
           <h2>Cadastre um animal</h2>
           <form action="utils/save.php" method="POST" enctype="multipart/form-data" onsubmit="return enviarFormulario()">
-            <input type="text" name="nome" placeholder="Nome do pet" required>
-            <input type="text" name="tipo" placeholder="Espécie" required>
-            <input type="text" name="cor" placeholder="Cor" required>
-            <input type="text" name="cidade" list="lista-cidades" placeholder="Digite ou selecione a cidade" required>
-            <datalist id="lista-cidades">
-              <?php foreach ($cidades as $cidade): ?>
-              <option value="<?= htmlspecialchars($cidade) ?>">
-              <?php endforeach; ?>
-            </datalist>
-
-            <input type="text" name="bairro" list="lista-bairros" placeholder="Digite ou selecione o bairro" required>
-            <datalist id="lista-bairros">
-              <?php foreach ($bairros as $bairro): ?>
-              <option value="<?= htmlspecialchars($bairro) ?>">
-              <?php endforeach; ?>
-            </datalist>
-            
-            
-
-            
-
-            <input type="hidden" name="data" value="<?= date('Y-m-d H:i:s') ?>">
+            <input type="text" name="nome" placeholder="Nome do pet" maxlength="40" onblur="semnome(this.value);">
+            <input type="text" name="tipo" placeholder="Espécie" maxlength="15" required>
+            <input type="text" name="cor" placeholder="Cor do pet" maxlength="15" required>
+            <input name="cep" type="text" id="cep" value="" maxlength="10" maxlength="9"
+            onblur="pesquisacep(this.value);" placeholder="Seu CEP" required />
+            <input type="hidden" name="cidade" id="cidade" placeholder="Cidade" required>
+            <input type="hidden" name="bairro" id="bairro" placeholder="Bairro" required>
+            <input type="hidden" name="data" value="<?= date("d/m/Y H:i:s") ?>">
             <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required>
             <div class="form-group">
               <label for="descricao"></label>
@@ -116,14 +107,23 @@ $cidades = listarUnicos($dados, 'cidade');
     <section class="listagem" id="listagem">
 	  <h2>🚨 LISTA DE PETS 🚨</h2>
       <div class="filtros">
+        <select onchange="filtrar()" id="filtro-status">
+          <option value="" disabled selected>Filtrar o status...</option>
+          <option value="">Todos</option>
+          <?php foreach ($statuss as $status): ?>
+            <option value="<?= $status ?>"><?= $status?></option>
+          <?php endforeach; ?>
+        </select>
         <select onchange="filtrar()" id="filtro-bairro">
-          <option value="">Filtrar por bairro...</option>
+          <option value="" disabled selected>Filtrar por bairro...</option>
+          <option value="">Todos</option>
           <?php foreach ($bairros as $bairro): ?>
             <option value="<?= $bairro ?>"><?= $bairro ?></option>
           <?php endforeach; ?>
         </select>
         <select onchange="filtrar()" id="filtro-tipo">
-          <option value="">Filtrar por espécie...</option>
+          <option value="" disabled selected>Filtrar por espécie...</option>
+          <option value="">Todos</option>
           <?php foreach ($tipos as $tipo): ?>
             <option value="<?= $tipo ?>"><?= ucfirst($tipo) ?></option>
           <?php endforeach; ?>
@@ -131,9 +131,9 @@ $cidades = listarUnicos($dados, 'cidade');
       </div>
       <div id="cards-container" class="card-lista">
         <?php foreach (array_reverse($dados) as $pet): ?>
-          <div class="card" data-bairro="<?= $pet['bairro'] ?>" data-tipo="<?= $pet['tipo'] ?>">
+          <div class="card" data-bairro="<?= $pet['bairro'] ?>" data-tipo="<?= $pet['tipo'] ?>" data-status="<?= $pet['status'] ?>">
             <img src="<?= $pet['imagem'] ?>" alt="<?= $pet['nome'] ?>">
-            <h3><?= $pet['nome'] ?></h3>
+            <h3><?= !empty($pet['nome']) ? $pet['nome'] : 'NÃO IDENTIFICADO' ?></h3>
             <p>
               <strong><?= ucfirst($pet['tipo']) ?></strong> -
               <?php
@@ -146,7 +146,7 @@ $cidades = listarUnicos($dados, 'cidade');
               </span>
             </p>
             <p><?= $pet['cidade'] ?> - <?= $pet['bairro'] ?></p>
-            <p><?= date('d/m/Y H:i', strtotime($pet['data'])) ?></p>
+            <p><?= $pet['data'] ?></p>
             <p>📞 <span class="telefone"><?= preg_replace('/\D/', '', $pet['telefone']) ?></span>
           <a class="whatsapp-btn" href="https://wa.me/55<?= $pet['telefone'] ?>" target="_blank">
             <img src="img/icons/whatsapp-icon.png" alt="WhatsApp" style="width: 20px; height: 20px; vertical-align: middle;">
@@ -161,7 +161,7 @@ $cidades = listarUnicos($dados, 'cidade');
     </section>
   </main>
   <footer class="footer">
-    <p>© 2025 <a href="https://github.com/joaopssouza" target="_blank">Joao P. S. Souza</a> — Todos os direitos reservados.</p>
+    <p>© 2025 - <?php echo date("Y");?><a href="https://github.com/joaopssouza" target="_blank"> Joao P. S. Souza</a> — Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>

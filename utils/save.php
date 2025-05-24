@@ -21,9 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
   $dados = $_POST;
   $dados['descricao'] = substr($_POST['descricao'], 0, 110);
   $dados['id'] = uniqid('pet_');
+  $dados['cidade'] = $_POST['cidade'];
+  $dados['bairro']= $_POST['bairro'];
+  $dados['nome']= $_POST['nome'];
+
   $ext = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
   $nomeImagem = uniqid('pet_', true) . '.' . $ext;
-  $caminhoDestino = '../img/' . $nomeImagem;
+  $caminhoDestino = '../img/pictures/' . $nomeImagem;
 
   if ($_FILES['foto']['size'] > 5 * 1024 * 1024) {
     header("Location: ../index.php?error=imagem_grande");

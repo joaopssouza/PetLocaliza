@@ -244,7 +244,7 @@ textarea.form-control {
 }
 
 /* Filtro bairro */
-#filtro-bairro, #filtro-tipo{
+#filtro-bairro, #filtro-tipo, #filtro-status{
  border-top-left-radius:5px;
  border-top-right-radius:5px;
  border-bottom-left-radius:5px;
