@@ -69,7 +69,13 @@ $statuss = listarUnicos($dados, 'status');
           <h2>Cadastre um animal</h2>
           <form action="utils/save.php" method="POST" enctype="multipart/form-data" onsubmit="return enviarFormulario()">
             <input type="text" name="nome" placeholder="Nome do pet" maxlength="40" onblur="semnome(this.value);">
-            <input type="text" name="tipo" placeholder="Espécie" maxlength="15" required>
+
+            <select onchange="" name="tipo" id="tipo" required>
+              <option value="" disabled selected>Selecione a espécie</option>
+              <option value="Cachorro">Cachorro</option>
+              <option value="Gato">Gato</option>
+            </select>
+
             <input type="text" name="cor" placeholder="Cor do pet" maxlength="15" required>
             <input name="cep" type="text" id="cep" value="" maxlength="10" maxlength="9"
             onblur="pesquisacep(this.value);" placeholder="Seu CEP" required />
@@ -147,8 +153,8 @@ $statuss = listarUnicos($dados, 'status');
             </p>
             <p><?= $pet['cidade'] ?> - <?= $pet['bairro'] ?></p>
             <p><?= $pet['data'] ?></p>
-            <p>📞 <span class="telefone"><?= preg_replace('/\D/', '', $pet['telefone']) ?></span>
-          <a class="whatsapp-btn" href="https://wa.me/55<?= $pet['telefone'] ?>" target="_blank">
+            <p>📞 <span class="telefone"><?= $pet['telefone'] ?></span>
+          <a class="whatsapp-btn" href="https://wa.me/55<?= preg_replace('/\D/', '', $pet['telefone']) ?>" target="_blank">
             <img src="img/icons/whatsapp-icon.png" alt="WhatsApp" style="width: 20px; height: 20px; vertical-align: middle;">
           </a>
           </p>  
