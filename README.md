@@ -33,6 +33,12 @@ PetLocaliza is a web application that facilitates the dissemination of lost or f
 
 ---
 
+## 📦 Deployment with Docker and Render.com
+You can easily deploy this project using Docker and Render.com for automated builds and deployment.
+
+The project is already deployed and available at: [https://petlocaliza.onrender.com/](https://petlocaliza.onrender.com/)
+
+---
 ## 🗂️ Data Structure
 
 The data is currently stored in `data/datas.json`, but the project can be easily adapted to use **NoSQL** databases such as:
